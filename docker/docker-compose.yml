@@ -90,7 +90,7 @@ services:
       - BPL_DEBUG_PORT=9888
 
   bookshop-ui:
-    image: "ghcr.io/polarbookshop/polar-ui:v1"
+    image: "ghcr.io/shantdashjianeducation/bookshop-ui:latest"
     container_name: "bookshop-ui"
     ports:
       - 9004:9004
