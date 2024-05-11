@@ -28,7 +28,7 @@ echo "\n⌛ Waiting for Keycloak to be ready..."
 kubectl wait \
   --for=condition=ready pod \
   --selector=app=bookshop-keycloak \
-  --timeout=300s
+  --timeout=600s
 
 echo "\n⌛ Ensuring Keycloak Ingress is created..."
 
