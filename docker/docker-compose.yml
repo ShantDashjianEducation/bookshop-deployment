@@ -130,7 +130,7 @@ services:
   bookshop-keycloak:
     build:
       context: .
-      dockerfile: ./keycloak/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: "bookshop-keycloak"
     command: start-dev --import-realm
     volumes:
