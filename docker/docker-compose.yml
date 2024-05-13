@@ -4,6 +4,7 @@ services:
 
   catalog-service:
     depends_on:
+      - bookshop-keycloak
       - bookshop-postgres
     image: "catalog-service"
     container_name: "catalog-service"
@@ -19,9 +20,11 @@ services:
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - SPRING_DATASOURCE_URL=jdbc:postgresql://bookshop-postgres:5432/bookshopdb_catalog
       - SPRING_PROFILES_ACTIVE=testdata
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://host.docker.internal:8080/realms/Bookshop
 
   order-service:
     depends_on:
+      - bookshop-keycloak
       - bookshop-postgres
       - bookshop-rabbitmq
     image: "order-service"
@@ -38,6 +41,7 @@ services:
       - SPRING_R2DBC_URL=r2dbc:postgresql://bookshop-postgres:5432/bookshopdb_order
       - SPRING_FLYWAY_URL=jdbc:postgresql://bookshop-postgres:5432/bookshopdb_order
       - SPRING_RABBITMQ_HOST=bookshop-rabbitmq
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://host.docker.internal:8080/realms/Bookshop
 
   dispatcher-service:
     depends_on:
@@ -140,8 +144,3 @@ services:
       - KEYCLOAK_ADMIN_PASSWORD=password
     ports:
       - 8080:8080
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://0.0.0.0:8080/realms/Bookshop" ]
-      interval: 10s
-      timeout: 5s
-      retries: 100
