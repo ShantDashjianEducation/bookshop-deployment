@@ -1,6 +1,6 @@
-fullnameOverride: polar-keycloak
+fullnameOverride: bookshop-keycloak
 commonAnnotations:
-  app: polar-keycloak
+  app: bookshop-keycloak
 image:
   tag: 22.0.5-debian-11-r2
 extraEnvVars:

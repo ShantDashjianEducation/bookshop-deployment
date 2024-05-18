@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: polar-ui
+  name: bookshop-ui
   labels:
-    app: polar-ui
+    app: bookshop-ui
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: polar-ui
+      app: bookshop-ui
   template:
     metadata:
       labels:
-        app: polar-ui
+        app: bookshop-ui
     spec:
       containers:
-        - name: polar-ui
-          image: ghcr.io/polarbookshop/polar-ui:v1
+        - name: bookshop-ui
+          image: ghcr.io/shantdashjianeducation/bookshop-ui:latest
           imagePullPolicy: Always
           lifecycle:
             preStop:
@@ -40,13 +40,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: polar-ui
+  name: bookshop-ui
   labels:
-    app: polar-ui
+    app: bookshop-ui
 spec:
   type: ClusterIP
   selector:
-    app: polar-ui
+    app: bookshop-ui
   ports:
     - protocol: TCP
       port: 80
