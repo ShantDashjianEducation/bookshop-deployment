@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- github.com/shantdashjianeducation/catalog-service/k8s?ref=60230eceae6cd64756648fb6f44f49ce21bf7c4f
+
+patchesStrategicMerge:
+- patch-env.yml
+- patch-resources.yml
+- patch-volumes.yml
+
+configMapGenerator:
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: catalog-config
+
+images:
+- name: catalog-service
+  newName: ghcr.io/shantdashjianeducation/catalog-service
+  newTag: 60230eceae6cd64756648fb6f44f49ce21bf7c4f
+
+replicas:
+- count: 2
+  name: catalog-service
