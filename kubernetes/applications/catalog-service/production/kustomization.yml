@@ -18,7 +18,7 @@ configMapGenerator:
 images:
 - name: catalog-service
   newName: ghcr.io/shantdashjianeducation/catalog-service
-  newTag: 60230eceae6cd64756648fb6f44f49ce21bf7c4f
+  newTag: 1027c77029d50704ff9fc0998093fc3245e89fff
 
 replicas:
 - count: 2
