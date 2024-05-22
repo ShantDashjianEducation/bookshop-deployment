@@ -2,25 +2,25 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/shantdashjianeducation/edge-service/k8s?ref=main
+- github.com/shantdashjianeducation/edge-service/k8s?ref=main
 
 patchesStrategicMerge:
-  - patch-env.yml
-  - patch-ingress.yml
-  - patch-resources.yml
-  - patch-volumes.yml
+- patch-env.yml
+- patch-ingress.yml
+- patch-resources.yml
+- patch-volumes.yml
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: edge-config
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: edge-config
 
 images:
-  - name: edge-service
-    newName: ghcr.io/shantdashjianeducation/edge-service
-    newTag: latest
+- name: edge-service
+  newName: ghcr.io/shantdashjianeducation/edge-service
+  newTag: baa86d9a5a22d0305f724f80c73bcf914f56c3e8
 
 replicas:
-  - count: 1
-    name: edge-service
+- count: 1
+  name: edge-service
