@@ -1,5 +1,5 @@
 bookshop:
-  greeting: Welcome to our book catalog from a production Kubernetes environment!
+  greeting: Welcome to our book catalog from a production Kubernetes environment using GitOps agent!
 spring:
   config:
     import: configtree:/workspace/secrets/*/
