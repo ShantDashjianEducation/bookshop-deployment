@@ -19,7 +19,7 @@ configMapGenerator:
 images:
 - name: edge-service
   newName: ghcr.io/shantdashjianeducation/edge-service
-  newTag: fae2a283fbefc7ecf3a4f34372ab216bd2c40433
+  newTag: be56a4bdbf6ddc89544a64125ff6dea4a3120ccd
 
 replicas:
 - count: 1
